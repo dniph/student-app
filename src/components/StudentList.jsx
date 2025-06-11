@@ -1,26 +1,12 @@
 import './StudentList.css';
-
 import Student from './Student';
 
-const StudentList = () => {
-    const studentData = [
-        {
-            nameData: 'Ada',
-            emailData: 'ada@dev.org'
-        },
-        {
-            nameData: 'Soo-ah',
-            emailData: 'sooah@dev.org'
-        },
-        {
-            nameData: 'Chrissy',
-            emailData: 'chrissy@dev.org'
-        }
-    ];
-
-    const studentComponents = studentData.map(student => {
+const StudentList = (props) => {
+    const studentComponents = props.students.map((student, index) => {
         return (
-            <li><Student name={student.nameData} email={student.emailData}></Student></li>
+            <li key={index}>
+                <Student name={student.nameData} email={student.emailData}></Student>
+            </li>
         );
     });
 
@@ -31,7 +17,7 @@ const StudentList = () => {
                     {studentComponents}
                 </ul>
             </section>
-        )
-    }
+        );
+    };
 
 export default StudentList;
