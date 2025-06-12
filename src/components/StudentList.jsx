@@ -1,5 +1,6 @@
 import './StudentList.css';
 import Student from './Student';
+import PropTypes from 'prop-types';
 
 const StudentList = (props) => {
     const studentComponents = props.students.map((student, index) => {
@@ -12,12 +13,22 @@ const StudentList = (props) => {
 
         return (
             <section>
-                <h2>Student List</h2>
+                <h2 className="student-list__heading">Student List</h2>
                 <ul>
                     {studentComponents}
                 </ul>
             </section>
         );
     };
+
+    StudentList.propTypes = {
+    students: PropTypes.arrayOf(
+        PropTypes.shape({
+        nameData: PropTypes.string.isRequired,
+        emailData: PropTypes.string.isRequired,
+        })
+    )
+    };
+    
 
 export default StudentList;
